@@ -1,0 +1,22 @@
+﻿@using TabletShop
+@model TabletShopService.Tablet
+
+<h2>@Model.Model</h2>
+
+<p>
+    <img alt="@Model.Model" src="@Model.Photo" />
+</p>
+
+<div id="tablet-details">
+    <p>
+        <em>@ApplicationResource.lblDescription</em>
+        @Model.Description
+    </p>
+    <p>
+        <em>@ApplicationResource.lblPrice</em>
+        @String.Format("{0:F}", Model.Price)
+    </p>
+    <p>
+        @Html.ActionLink("Add to cart", "AddToCart","ShoppingCart",new {id = Model.TabletId },"")
+    </p>
+</div>

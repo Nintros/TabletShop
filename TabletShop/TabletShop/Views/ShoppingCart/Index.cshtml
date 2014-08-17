@@ -1,0 +1,64 @@
+﻿@using TabletShop
+@model TabletShop.ViewModels.ShoppingCartViewModel
+@{
+    ViewBag.Title = "Shopping Cart";
+}
+<h3>
+    <em>@ApplicationResource.txtReview</em> @ApplicationResource.lblYourCart
+</h3>
+<p class="button">
+	@Html.ActionLink("Checkout >>", "AddressAndPayment", "Checkout")
+</p>
+<div id="content">
+<div id="update-message">
+</div>
+<table>
+	<tr>
+		<th>
+			@ApplicationResource.txtTablet
+		</th>
+		<th>
+			@ApplicationResource.txtPrice
+		</th>
+		<th>
+			@ApplicationResource.txtQuantity
+		</th>
+		<th></th>
+	</tr>
+	@foreach (var item in Model.CartItems)
+	{
+		<tr id="row-@item.RecordId">
+			<td>
+				@item.Tablet.Model
+			</td>
+			<td>
+				@item.Tablet.Price
+			</td>
+			<td id="item-count-@item.RecordId">
+				@item.Count
+			</td>
+			<td>
+				<a href="#" class="RemoveLink" data-id="@item.RecordId">@ApplicationResource.txtRemoveFromCard</a>
+			</td>
+			<td>
+				@Html.ActionLink("Details", "TabletDetails", "Home", new { id = item.TabletId }, null)
+			</td>
+		</tr>
+	}
+	<br />
+	<tr>
+		<td>
+			@ApplicationResource.txtTotal
+		</td>
+		<td>
+		</td>
+		<td>
+		</td>
+		<td id="cart-total">
+			@Model.CartTotal
+		</td>
+	</tr>
+</table>
+</div>
+<script src="/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="~/Scripts/Shop/ShoppingCart.js"></script>

@@ -1,0 +1,47 @@
+﻿@using TabletShop
+@model KeyValuePair<List<TabletShopService.Tablet>, int>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<table>
+	<tr>
+		<td>
+			@Html.Label(@ApplicationResource.txtID)
+		</td>
+		<td>
+			@Html.Label(@ApplicationResource.txtModel)
+		</td>
+		<td>
+			@Html.Label(@ApplicationResource.txtPrice)
+		</td>
+	</tr>
+	@foreach (var item in Model.Key) {
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.TabletId)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Model)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Price) @ApplicationResource.signDollar
+			</td>
+			<td>
+				@Html.ActionLink("Details", "TabletDetails", "Home",new {id = item.TabletId},"") 
+			</td>
+		</tr>
+	}
+</table>
+<br/>
+	@if(ViewBag.PrevPage != -1)
+	{
+		@Html.ActionLink("<<", "Index", "Home" ,new {pageIndex = @ViewBag.PrevPage},"")
+	}
+	
+	@ViewBag.CurrPage
+
+	@if(ViewBag.NextPage != -1)
+	{
+		@Html.ActionLink(">>", "Index", "Home", new {pageIndex = @ViewBag.NextPage},"")
+	}

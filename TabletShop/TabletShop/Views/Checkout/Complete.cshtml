@@ -1,0 +1,12 @@
+﻿@using TabletShop
+@model int
+@{
+	ViewBag.Title = "Checkout Complete";
+}
+
+<h2>@ApplicationResource.txtCheckoutComplete</h2>
+
+<p>@ApplicationResource.lblThanksForYourOrderYourOrderNumberIs @Model</p>
+<p>
+	@ApplicationResource.txtYouCouldReturnToTablet @Html.ActionLink("shop", "Index", "Home")
+</p>

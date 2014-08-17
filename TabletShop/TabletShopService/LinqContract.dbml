@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TabletShop" Class="LinqContractDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=FLETCHER\FLETCHER;Initial Catalog=TabletShop;Integrated Security=True" SettingsObjectName="TabletShopService.Properties.Settings" SettingsPropertyName="TabletShopConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Tablet" Member="Tablets">
+    <Type Name="Tablet">
+      <Column Name="TabletId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Model" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Photo" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="Tablet_OrderDetail" Member="OrderDetails" ThisKey="TabletId" OtherKey="TabletId" Type="OrderDetail" />
+      <Association Name="Tablet_Cart" Member="Carts" ThisKey="TabletId" OtherKey="TabletId" Type="Cart" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OrderDetail" Member="OrderDetails">
+    <Type Name="OrderDetail">
+      <Column Name="OrderDetailId" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UnitPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="TabletId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrderId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="true" />
+      <Column Name="CheckOutId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="OrderDetail_Order" Member="Order" ThisKey="OrderDetailId" OtherKey="OrderId" Type="Order" Cardinality="One" />
+      <Association Name="Tablet_OrderDetail" Member="Tablet" ThisKey="TabletId" OtherKey="TabletId" Type="Tablet" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Order]" Member="Orders">
+    <Type Name="Order">
+      <Column Name="OrderId" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HouseNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ZipCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="OrderDetail_Order" Member="OrderDetail" ThisKey="OrderId" OtherKey="OrderDetailId" Type="OrderDetail" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cart" Member="Carts">
+    <Type Name="Cart">
+      <Column Name="CartId" Type="System.String" DbType="nvarchar(50)" CanBeNull="false" />
+      <Column Name="RecordId" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TabletId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Count" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DataCreated" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Tablet_Cart" Member="Tablet" ThisKey="TabletId" OtherKey="TabletId" Type="Tablet" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

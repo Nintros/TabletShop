@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="LinqContract">
+  <DataContextMoniker Name="/LinqContractDataContext" />
+  <nestedChildShapes>
+    <classShape Id="495f5bda-ce59-4c53-8c16-b91a1bcfbde3" absoluteBounds="3.125, 2, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/LinqContractDataContext/Tablet" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bcdfd14f-9540-43fd-8e72-26169d00e6de" absoluteBounds="3.14, 2.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e54caf62-59b5-4e7e-bec5-68214e70ae8a" absoluteBounds="6.125, 1.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/LinqContractDataContext/OrderDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f77067b6-427d-4e4f-8e3e-86d629d3af39" absoluteBounds="6.14, 2.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.125 : 2.85659912109375); (6.125 : 2.85659912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LinqContractDataContext/Tablet/Tablet_OrderDetail" />
+      <nodes>
+        <classShapeMoniker Id="495f5bda-ce59-4c53-8c16-b91a1bcfbde3" />
+        <classShapeMoniker Id="e54caf62-59b5-4e7e-bec5-68214e70ae8a" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="8d0ea324-2c02-4930-b0f3-937ad67acb3f" absoluteBounds="5.375, 4.375, 2, 2.5401025390625">
+      <DataClassMoniker Name="/LinqContractDataContext/Order" />
+      <nestedChildShapes>
+        <elementListCompartment Id="22b49561-c9d2-4662-9fc6-4e47c5e5734e" absoluteBounds="5.39, 4.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.75 : 3.7131982421875); (6.75 : 4.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LinqContractDataContext/OrderDetail/OrderDetail_Order" />
+      <nodes>
+        <classShapeMoniker Id="e54caf62-59b5-4e7e-bec5-68214e70ae8a" />
+        <classShapeMoniker Id="8d0ea324-2c02-4930-b0f3-937ad67acb3f" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="06a9ce7c-1c9c-4c8a-843f-05ab5cc68089" absoluteBounds="1.625, 4, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/LinqContractDataContext/Cart" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e8059fd5-fa43-41ab-a776-f6684a3ba951" absoluteBounds="1.6400000000000001, 4.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.375 : 3.77089680989583); (3.375 : 4)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LinqContractDataContext/Tablet/Tablet_Cart" />
+      <nodes>
+        <classShapeMoniker Id="495f5bda-ce59-4c53-8c16-b91a1bcfbde3" />
+        <classShapeMoniker Id="06a9ce7c-1c9c-4c8a-843f-05ab5cc68089" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
