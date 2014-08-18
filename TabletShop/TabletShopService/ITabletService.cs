@@ -17,21 +17,21 @@ namespace TabletShopService
 		[OperationContract]
 		Tablet GetTablet(int id);
 
-		[WebGet(UriTemplate = "Cart?ShoppingCartId={ShoppingCartId}&TabletId={TabletId}", ResponseFormat = WebMessageFormat.Json)]
+		[WebGet(UriTemplate = "Cart?ShoppingCartId={shoppingCartId}&TabletId={tabletId}", ResponseFormat = WebMessageFormat.Json)]
 		[OperationContract]
-		Cart GetCart(string ShoppingCartId, int TabletId);
+		Cart GetCart(string shoppingCartId, int tabletId);
 
-		[WebGet(UriTemplate = "GetCartByRecordIdAndShppingId?ShoppingCartId={ShoppingCartId}&RecordId={RecordId}", ResponseFormat = WebMessageFormat.Json)]
+		[WebGet(UriTemplate = "GetCartByRecordIdAndShppingId?ShoppingCartId={shoppingCartId}&RecordId={recordId}", ResponseFormat = WebMessageFormat.Json)]
 		[OperationContract]
-		Cart GetCartByRecordIdAndShppingId(string ShoppingCartId, int RecordId);
+		Cart GetCartByRecordIdAndShppingId(string shoppingCartId, int recordId);
 
-		[WebGet(UriTemplate = "CartByRecord?RecordId={RecordId}", ResponseFormat = WebMessageFormat.Json)]
+		[WebGet(UriTemplate = "CartByRecord?RecordId={recordId}", ResponseFormat = WebMessageFormat.Json)]
 		[OperationContract]
 		Cart GetCartByRecordId(int recordId);
 
-		[WebGet(UriTemplate = "Carts?ShoppingCartId={ShoppingCartId}", ResponseFormat = WebMessageFormat.Json)]
+		[WebGet(UriTemplate = "Carts?shoppingCartId={ShoppingCartId}", ResponseFormat = WebMessageFormat.Json)]
 		[OperationContract]
-		List<Cart> GetCarts(string ShoppingCartId);
+		List<Cart> GetCarts(string shoppingCartId);
 
 		[OperationContract]
 		[WebInvoke(UriTemplate = "MigrateCart/{id}")]

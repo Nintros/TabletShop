@@ -21,15 +21,15 @@ namespace TabletShopService
 			return tablet;
 		}
 
-		public Cart GetCart(string ShoppingCartId, int TabletId)
+		public Cart GetCart(string shoppingCartId, int tabletId)
 		{
-			Cart cart = context.Carts.ToList().FirstOrDefault(e => e.CartId == ShoppingCartId && e.TabletId == TabletId);
+			Cart cart = context.Carts.ToList().FirstOrDefault(e => e.CartId == shoppingCartId && e.TabletId == tabletId);
 			return cart;
 		}
 
-		public Cart GetCartByRecordIdAndShppingId(string ShoppingCartId, int RecordId)
+		public Cart GetCartByRecordIdAndShppingId(string shoppingCartId, int recordId)
 		{
-			Cart cart = context.Carts.ToList().FirstOrDefault(e => e.CartId == ShoppingCartId && e.RecordId == RecordId);
+			Cart cart = context.Carts.ToList().FirstOrDefault(e => e.CartId == shoppingCartId && e.RecordId == recordId);
 			return cart;
 		}
 
@@ -39,9 +39,9 @@ namespace TabletShopService
 			return cart;
 		}
 
-		public List<Cart> GetCarts(string ShoppingCartId)
+		public List<Cart> GetCarts(string shoppingCartId)
 		{
-			List<Cart> cart = context.Carts.Where(e => e.CartId == ShoppingCartId).ToList();
+			List<Cart> cart = context.Carts.Where(e => e.CartId == shoppingCartId).ToList();
 			return cart;
 		}
 

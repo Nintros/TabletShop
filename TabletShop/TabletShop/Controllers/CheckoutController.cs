@@ -18,7 +18,13 @@ namespace TabletShop.Controllers
 		{
 			return View();
 		}
-
+		
+		[HttpGet]
+		public PartialViewResult AddressAndPaymentetailsPartial()
+		{
+			return PartialView("AddressAndPayment");
+		}
+		
 		[HttpPost]
 		public ActionResult AddressAndPayment(ProxyOrder proxyOrder)
 		{

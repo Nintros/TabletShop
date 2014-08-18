@@ -7,7 +7,9 @@
     <em>@ApplicationResource.txtReview</em> @ApplicationResource.lblYourCart
 </h3>
 <p class="button">
-	@Html.ActionLink("Checkout >>", "AddressAndPayment", "Checkout")
+	@(User.Identity.IsAuthenticated 
+		? Ajax.ActionLink("Checkout >>", "AddressAndPaymentetailsPartial", "Checkout", new AjaxOptions { UpdateTargetId = "content", InsertionMode = InsertionMode.Replace, HttpMethod = "Get" })
+		: Html.ActionLink("Checkout >>", "AddressAndPayment", "Checkout"))
 </p>
 <div id="content">
 <div id="update-message">
