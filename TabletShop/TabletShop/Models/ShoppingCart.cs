@@ -11,10 +11,10 @@ namespace TabletShop.Models
 
 	public class ShoppingCart
 	{
-		private TabletService service = new TabletService();
-
 		private const double VAT = 0.2;
 
+		private TabletService service = new TabletService();
+		
 		private string ShoppingCartId { get; set; }
 
         public const string CartSessionKey = "CartId";

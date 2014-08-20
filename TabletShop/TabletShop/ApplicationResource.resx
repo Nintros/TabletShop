@@ -138,6 +138,9 @@
   <data name="txtCheckoutComplete" xml:space="preserve">
     <value>Checkout Complete</value>
   </data>
+  <data name="txtGetImage" xml:space="preserve">
+    <value>GetImage?image={0}</value>
+  </data>
   <data name="txtID" xml:space="preserve">
     <value>ID</value>
   </data>

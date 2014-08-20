@@ -5,6 +5,8 @@ using System.ServiceModel.Web;
 
 namespace TabletShopService
 {
+	using System.ServiceModel;
+
 	public class TabletService : ITabletService
 	{
 		private LinqContractDataContext context = new LinqContractDataContext();

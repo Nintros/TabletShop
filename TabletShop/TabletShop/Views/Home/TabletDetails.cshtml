@@ -1,10 +1,12 @@
-﻿@using TabletShop
+﻿@using System.Text
+@using TabletShop
+@using TabletShop.Helpers;
 @model TabletShopService.Tablet
 
 <h2>@Model.Model</h2>
 
 <p>
-    <img alt="@Model.Model" src="@Model.Photo" />
+    <img alt="@Model.Model" src="@string.Format(Constants.WCF_SERVICE_URL + ApplicationResource.txtGetImage, Model.Photo)" />
 </p>
 
 <div id="tablet-details">

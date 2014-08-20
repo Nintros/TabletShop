@@ -15,6 +15,7 @@ $(function () {
 					}
 
 					$('#cart-total').text(data.CartTotal);
+					("#cart-total").attr("val", data.CartTotal);
 					$('#update-message').text(data.Message);
 					$('#cart-status').text('Cart (' + data.CartCount + ')');
 				});
@@ -38,3 +39,12 @@ function handleUpdate() {
 	$('#update-message').text(data.Message);
 	$('#cart-status').text('Cart (' + data.CartCount + ')');
 }
+
+
+$(document).off("click", ".button");
+$(document).on("click", ".button", function () {
+	if ($("#cart-total").attr("val") == 0) {
+		alert("please selects tablets for order");
+		return false;
+	}
+});

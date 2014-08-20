@@ -8,8 +8,8 @@
 </h3>
 <p class="button">
 	@(User.Identity.IsAuthenticated 
-		? Ajax.ActionLink("Checkout >>", "AddressAndPaymentetailsPartial", "Checkout", new AjaxOptions { UpdateTargetId = "content", InsertionMode = InsertionMode.Replace, HttpMethod = "Get" })
-		: Html.ActionLink("Checkout >>", "AddressAndPayment", "Checkout"))
+		  ? Ajax.ActionLink("Checkout >>", "AddressAndPaymentetailsPartial", "Checkout", new AjaxOptions { UpdateTargetId = "content", InsertionMode = InsertionMode.Replace, HttpMethod = "Get" })
+		  : Html.ActionLink("Checkout >>", "AddressAndPayment", "Checkout"))
 </p>
 <div id="content">
 <div id="update-message">
@@ -56,7 +56,7 @@
 		</td>
 		<td>
 		</td>
-		<td id="cart-total">
+		<td id="cart-total" val="@Model.CartTotal">
 			@Model.CartTotal
 		</td>
 	</tr>

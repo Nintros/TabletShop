@@ -124,6 +124,15 @@ namespace TabletShop {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GetImage?image={0}.
+        /// </summary>
+        public static string txtGetImage {
+            get {
+                return ResourceManager.GetString("txtGetImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ID.
         /// </summary>
         public static string txtID {
