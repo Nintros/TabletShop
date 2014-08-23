@@ -9,7 +9,7 @@ namespace TabletShopService
 
 	public class TabletService : ITabletService
 	{
-		private LinqContractDataContext context = new LinqContractDataContext();
+		private LinqContractDataContext context = new LinqContractDataContext(Constants.CONNECTION_STRING);
 
 		public KeyValuePair<List<Tablet>, int> ReadTabletsByPage(int pageIndex, int pageSize, string filterValue, string sortExpression)
 		{
