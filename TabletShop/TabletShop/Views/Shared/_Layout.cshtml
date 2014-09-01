@@ -10,23 +10,27 @@
     </head>
     <body>
         <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("Developed by Maksym Mokrousov", "Index", "Home")</p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-							<li>@Html.ActionLink("Home", "Index", "Home")</li>
-							<li>@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Developed by Maksym Mokrousov</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li>@Html.ActionLink("Home", "Index", "Home")</li>
+				<li>@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
+				<li>@Html.ActionLink("About", "About", "Home")</li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				@Html.Partial("_LoginPartial")
+			</ul>
+		</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
         </header>
         <div id="body">
             @RenderSection("featured", required: false)
