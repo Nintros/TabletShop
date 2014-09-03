@@ -4,47 +4,54 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<div id="content">
-<table>
-	<tr>
-		<td>
-			@Html.Label(@ApplicationResource.txtID)
-		</td>
-		<td>
-			@Html.Label(@ApplicationResource.txtModel)
-		</td>
-		<td>
-			@Html.Label(@ApplicationResource.txtPrice)
-		</td>
-	</tr>
-	@foreach (var item in Model.Key) {
-		<tr>
-			<td>
-				@item.TabletId
-			</td>
-			<td>
-				@item.Model
-			</td>
-			<td>
-				@item.Price @ApplicationResource.signDollar
-			</td>
-			<td>
-				@Ajax.ActionLink("Details","TabletDetailsPartial",new {id = item.TabletId},new AjaxOptions{UpdateTargetId = "content",InsertionMode = InsertionMode.Replace,HttpMethod = "Get"})
-			</td>
-		</tr>
-	}
-</table>
-<br/>
-	@if(ViewBag.PrevPage != -1)
-	{
-		@Ajax.ActionLink("<<","Grid",new {pageIndex = @ViewBag.PrevPage},new AjaxOptions{UpdateTargetId = "content",InsertionMode = InsertionMode.Replace,HttpMethod = "Get"})
-	}
-	
-	@ViewBag.CurrPage
 
-	@if(ViewBag.NextPage != -1)
-	{
-		@Ajax.ActionLink(">.","Grid",new {pageIndex = @ViewBag.NextPage},new AjaxOptions{UpdateTargetId = "content",InsertionMode = InsertionMode.Replace,HttpMethod = "Get"})
-	}
+<div id="content">
+	<table>
+		<thead>
+			<tr>
+				<td colspan="4">Tablets</td>
+			</tr>
+			<tr>
+				<td>
+					@Html.Label(@ApplicationResource.txtID)
+				</td>
+				<td>
+					@Html.Label(@ApplicationResource.txtModel)
+				</td>
+				<td colspan="2">
+					@Html.Label(@ApplicationResource.txtPrice)
+				</td>
+			</tr>
+		</thead>
+		@foreach (var item in Model.Key) {
+			<tr>
+				<td>
+					@item.TabletId
+				</td>
+				<td>
+					@item.Model
+				</td>
+				<td>
+					@item.Price @ApplicationResource.signDollar
+				</td>
+				<td>
+					@Ajax.ActionLink("Details","TabletDetailsPartial",new {id = item.TabletId},new AjaxOptions{UpdateTargetId = "content",InsertionMode = InsertionMode.Replace,HttpMethod = "Get"}, new {@class="button"})
+				</td>
+			</tr>
+		}
+	</table>
+	<br/>
+	<ul class="pager">
+		@if(ViewBag.PrevPage != -1)
+		{
+			<li>@Ajax.ActionLink("<<","Grid",new {pageIndex = @ViewBag.PrevPage},new AjaxOptions{UpdateTargetId = "content",InsertionMode = InsertionMode.Replace,HttpMethod = "Get"})</li>
+		}
 	
+		@ViewBag.CurrPage
+
+		@if(ViewBag.NextPage != -1)
+		{
+			<li>@Ajax.ActionLink(">.","Grid",new {pageIndex = @ViewBag.NextPage},new AjaxOptions{UpdateTargetId = "content",InsertionMode = InsertionMode.Replace,HttpMethod = "Get"})</li>
+		}
+	</ul>
 </div>

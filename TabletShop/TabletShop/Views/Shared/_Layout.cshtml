@@ -14,7 +14,7 @@
 		<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Developed by Maksym Mokrousov</a>
+			@Html.ActionLink("Developed by Maksym Mokrousov", "Index", "Home", null, new {@class ="navbar-brand" })
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -53,5 +53,6 @@
 		<script src="~/Scripts/bootstrap.min.js"></script>
 		<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 		<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+		<link href="~/Content/themes/base/table.css" rel="stylesheet" />
     </body>
 </html>

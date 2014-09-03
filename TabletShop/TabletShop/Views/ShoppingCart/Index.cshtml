@@ -14,53 +14,55 @@
 <div id="content">
 <div id="update-message">
 </div>
-<table>
-	<tr>
-		<th>
-			@ApplicationResource.txtTablet
-		</th>
-		<th>
-			@ApplicationResource.txtPrice
-		</th>
-		<th>
-			@ApplicationResource.txtQuantity
-		</th>
-		<th></th>
-	</tr>
-	@foreach (var item in Model.CartItems)
-	{
-		<tr id="row-@item.RecordId">
+	<table>
+		<thead>
+			<tr>
+				<td colspan="5">Your Cart</td>
+			</tr>
+			<tr>
+				<th>
+					@ApplicationResource.txtTablet
+				</th>
+				<th>
+					@ApplicationResource.txtPrice
+				</th>
+				<th>
+					@ApplicationResource.txtQuantity
+				</th>
+				<th colspan="2">
+				</th>
+			</tr>
+		</thead>
+		@foreach (var item in Model.CartItems)
+		{
+			<tr id="row-@item.RecordId">
+				<td>
+					@item.Tablet.Model
+				</td>
+				<td>
+					@item.Tablet.Price
+				</td>
+				<td id="item-count-@item.RecordId">
+					@item.Count
+				</td>
+				<td>
+					<a href="#" class="RemoveLink button" data-id="@item.RecordId">@ApplicationResource.txtRemoveFromCard</a>
+				</td>
+				<td>
+					@Html.ActionLink("Details", "TabletDetails", "Home", new { id = item.TabletId }, new{@class="button"})
+				</td>
+			</tr>
+		}
+		<br />
+		<tr>
 			<td>
-				@item.Tablet.Model
+				@ApplicationResource.txtTotal
 			</td>
-			<td>
-				@item.Tablet.Price
-			</td>
-			<td id="item-count-@item.RecordId">
-				@item.Count
-			</td>
-			<td>
-				<a href="#" class="RemoveLink" data-id="@item.RecordId">@ApplicationResource.txtRemoveFromCard</a>
-			</td>
-			<td>
-				@Html.ActionLink("Details", "TabletDetails", "Home", new { id = item.TabletId }, null)
+			<td id="cart-total" val="@Model.CartTotal" colspan="4">
+				@Model.CartTotal $
 			</td>
 		</tr>
-	}
-	<br />
-	<tr>
-		<td>
-			@ApplicationResource.txtTotal
-		</td>
-		<td>
-		</td>
-		<td>
-		</td>
-		<td id="cart-total" val="@Model.CartTotal">
-			@Model.CartTotal
-		</td>
-	</tr>
-</table>
+	</table>
 </div>
 <script src="/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
 <script src="~/Scripts/Shop/ShoppingCart.js"></script>
