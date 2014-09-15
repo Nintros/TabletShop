@@ -34,8 +34,8 @@ namespace TabletShopService
 		List<Cart> GetCarts(string shoppingCartId);
 
 		[OperationContract]
-		[WebInvoke(UriTemplate = "MigrateCart/{id}")]
-		void MigrateCart(string id);
+        [WebInvoke(UriTemplate = "MigrateCart?id={id}&userName={userName}")]
+        void MigrateCart(string id, string userName);
 
 		[OperationContract]
 		[WebInvoke(Method = "POST", UriTemplate = "/AddCart", ResponseFormat = WebMessageFormat.Json)]

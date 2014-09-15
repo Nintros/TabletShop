@@ -20,7 +20,7 @@ namespace TabletShop.Controllers
 		private void MigrateShoppingCart(string UserName)
 		{
 			// Associate shopping cart items with logged-in user
-			var cart = ShoppingCart.GetCart(this.HttpContext);
+			var cart = ShoppingCart.GetCart(HttpContext);
 
 			cart.MigrateCart(UserName);
 			Session[ShoppingCart.CartSessionKey] = UserName;
@@ -90,8 +90,8 @@ namespace TabletShop.Controllers
 				try
 				{
 					WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-					MigrateShoppingCart(model.UserName);
-					WebSecurity.Login(model.UserName, model.Password);
+                    WebSecurity.Login(model.UserName, model.Password);
+                    MigrateShoppingCart(model.UserName);
 					return RedirectToAction("Index", "Home");
 				}
 				catch (MembershipCreateUserException e)

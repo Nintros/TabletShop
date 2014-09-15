@@ -152,8 +152,7 @@ namespace TabletShop.Models
 
         public void MigrateCart(string userName)
         {
-            service.MigrateCart(ShoppingCartId);
-
+            service.MigrateCart(ShoppingCartId, userName);
         }
 	}
 }

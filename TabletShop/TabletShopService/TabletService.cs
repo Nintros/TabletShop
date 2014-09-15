@@ -5,8 +5,6 @@ using System.ServiceModel.Web;
 
 namespace TabletShopService
 {
-	using System.ServiceModel;
-
 	public class TabletService : ITabletService
 	{
 		private LinqContractDataContext context = new LinqContractDataContext(Constants.CONNECTION_STRING);
@@ -84,17 +82,14 @@ namespace TabletShopService
 			return order.OrderId;
 		}
 
-		public void MigrateCart(string id)
-		{
-			var carts = context.Carts.Where(e => e.CartId == id);
-			foreach (var item in carts)
-            {
-                item.CartId = id;
-            }
-			context.SubmitChanges();
+        public void MigrateCart(string id, string userName)
+        {
+            DeletePreviuosCarts(userName);
+            MigrateCartsToUser(id, userName);
+            context.SubmitChanges();
 		}
 
-		public Stream GetImage(string image)
+	    public Stream GetImage(string image)
 		{
 			FileStream fs;
 			try
@@ -109,5 +104,24 @@ namespace TabletShopService
 			WebOperationContext.Current.OutgoingResponse.ContentType = Constants.IMAGE_TYPE;
 			return fs;
 		}
+
+
+        private void MigrateCartsToUser(string id, string userName)
+        {
+            var carts = this.context.Carts.Where(e => e.CartId == id);
+            foreach (var item in carts)
+            {
+                item.CartId = userName;
+            }
+        }
+
+        private void DeletePreviuosCarts(string userName)
+        {
+            var oldcarts = this.context.Carts.Where(e => e.CartId == userName);
+            foreach (var item in oldcarts)
+            {
+                this.context.Carts.DeleteOnSubmit(item);
+            }
+        }
 	}
 }
