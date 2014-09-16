@@ -15,7 +15,7 @@ $(function () {
 					}
 
 					$('#cart-total').text(data.CartTotal);
-					("#cart-total").attr("val", data.CartTotal);
+					$("#cart-total").attr("val", data.CartTotal);
 					$('#update-message').text(data.Message);
 					$('#cart-status').text('Cart (' + data.CartCount + ')');
 				});
