@@ -7,26 +7,33 @@
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
+		@Scripts.Render("~/bundles/jquery")
+		@Scripts.Render("~/bundles/jqueryval")
+        @RenderSection("scripts", required: false)
     </head>
     <body>
         <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("Developed by Maksym Mokrousov", "Index", "Home")</p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-							<li>@Html.ActionLink("Home", "Index", "Home")</li>
-							<li>@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			@Html.ActionLink("Developed by Maksym Mokrousov", "Index", "Home", null, new {@class ="navbar-brand" })
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li>@Html.ActionLink("Home", "Index", "Home")</li>
+				<li>@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
+				<li>@Html.ActionLink("About", "About", "Home")</li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				@Html.Partial("_LoginPartial")
+			</ul>
+		</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
         </header>
         <div id="body">
             @RenderSection("featured", required: false)
@@ -41,10 +48,10 @@
                 </div>
             </div>
         </footer>
-		
-		@Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
-		<script src="~/Scripts/jquery-1.8.2.min.js"></script>
-		<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+		<script src="~/Scripts/bootstrap.min.js"></script>
+		<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+		<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+		<link href="~/Content/themes/base/table.css" rel="stylesheet" />
     </body>
 </html>
